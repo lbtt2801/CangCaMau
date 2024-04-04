@@ -43,6 +43,27 @@ export const getObject = async key => {
   }
 };
 
+export const updateObject = async (key, name, cccd, dateOfBirth, address, ward, district, province, dateRange,) => {
+  try {
+    const currentData = await AsyncStorage.getItem(key);
+    if (currentData !== null) {
+      const parsedData = JSON.parse(currentData);
+      parsedData.name = name;
+      parsedData.cccd = cccd;
+      parsedData.dateOfBirth = dateOfBirth;
+      parsedData.address = address;
+      parsedData.ward = ward;
+      parsedData.district = district;
+      parsedData.province = province;
+      parsedData.dateRange = dateRange;
+      await AsyncStorage.setItem(key, JSON.stringify(parsedData));
+      console.log("Đã cập nhật dữ liệu thành công!");
+    }
+  } catch (error) {
+    console.log("Lỗi khi cập nhật dữ liệu: ", error);
+  }
+};
+
 export const removeObjectFromStorage = async (key) => {
   try {
     await AsyncStorage.removeItem(key);

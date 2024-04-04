@@ -15,8 +15,10 @@ import TextInputCustom from '../components/TextInputCustom';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 import {getObject, removeObjectFromStorage} from '../AsyncStorage';
+import { useIsFocused } from "@react-navigation/native";
 
 const InformationScreen = ({navigation}) => {
+  const isFocused = useIsFocused();
   const [state, setState] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalBirthday, setIsShowModalBirthday] = useState(false);
@@ -34,23 +36,26 @@ const InformationScreen = ({navigation}) => {
   const [agencies, setAgencies] = useState();
   const [dateRange, setDateRange] = useState('dd/mm/yyyy');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const user = await getObject('user');
-      setName(user.name);
-      setRole(user.role);
-      setDateOfBirth(user.dateOfBirth);
-      setCCCD(user.cccd);
-      setAddress(user.address);
-      setWard(user.ward);
-      setDistrict(user.district);
-      setProvince(user.province);
-      setPhone(user.phone);
-      setDateRange(user.dateRange);
-    };
+  const fetchData = async () => {
+    const user = await getObject('user');
+    setName(user.name);
+    setRole(user.role);
+    setDateOfBirth(user.dateOfBirth);
+    setCCCD(user.cccd);
+    setAddress(user.address);
+    setWard(user.ward);
+    setDistrict(user.district);
+    setProvince(user.province);
+    setPhone(user.phone);
+    setDateRange(user.dateRange);
+  };
 
+  useEffect(() => {
+    if(isFocused){ 
     fetchData();
-  }, []);
+  }
+  }, [isFocused]);
+
   return (
     <View style={{flex: 1}}>
       <StatusBar backgroundColor="#F5F5F5" />
@@ -67,7 +72,6 @@ const InformationScreen = ({navigation}) => {
           tintColor: '#333333',
           width: 20,
           height: 20,
-          justifyContent: 'center',
           alignItems: 'center',
         }}
         iconLeftPress={() => {
@@ -90,7 +94,9 @@ const InformationScreen = ({navigation}) => {
             source={IMAGES.ic_scan}
             style={{width: 16, height: 16, marginEnd: 5}}
           />
-          <Text style={styles.text_scan}>Đăng ký bằng CCCD gắn chip</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('ScanQR')}>
+            <Text style={styles.text_scan}>Đăng ký bằng CCCD gắn chip</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -104,14 +110,14 @@ const InformationScreen = ({navigation}) => {
             value={name}
             setValue={value => setName(value)}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="CMND/CCCD"
             value={cccd}
             setValue={value => setCCCD(value)}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Ngày sinh"
@@ -123,14 +129,14 @@ const InformationScreen = ({navigation}) => {
             iconRightData={IMAGES.ic_calendar}
             iconRightStyle={{width: 16, height: 16}}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Địa chỉ"
             value={address}
             setValue={value => setAddress(value)}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Phường/xã"
@@ -140,7 +146,7 @@ const InformationScreen = ({navigation}) => {
             iconRightData={IMAGES.ic_options}
             iconRightStyle={{width: 10, height: 6}}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Quận/huyện"
@@ -150,7 +156,7 @@ const InformationScreen = ({navigation}) => {
             iconRightData={IMAGES.ic_options}
             iconRightStyle={{width: 10, height: 6}}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Tỉnh/Thành phố"
@@ -160,14 +166,14 @@ const InformationScreen = ({navigation}) => {
             iconRightData={IMAGES.ic_options}
             iconRightStyle={{width: 10, height: 6}}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Số điện thoại"
             value={phone}
             setValue={value => setPhone(value)}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Loại thuyền viên"
@@ -177,7 +183,7 @@ const InformationScreen = ({navigation}) => {
             iconRightData={IMAGES.ic_options}
             iconRightStyle={{width: 10, height: 6}}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
         </View>
 
@@ -187,14 +193,14 @@ const InformationScreen = ({navigation}) => {
             value={certificate}
             setValue={value => setCertificate(value)}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Cơ quan cấp"
             value={agencies}
             setValue={value => setAgencies(value)}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
           <TextInputCustom
             label="Ngày cấp"
@@ -206,7 +212,7 @@ const InformationScreen = ({navigation}) => {
             iconRightData={IMAGES.ic_calendar}
             iconRightStyle={{width: 16, height: 16}}
             isShowIconRight={isShowIconRight}
-            isShowKeyboard={isShowIconRight}
+            editable={state}
           />
         </View>
       </ScrollView>

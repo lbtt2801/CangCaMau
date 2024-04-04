@@ -19,7 +19,6 @@ const TextInputCustom = ({
   iconRightStyle,
   placeholder = '--',
   editable = true,
-  isShowKeyboard = true,
 }) => {
   return (
     <View style={{paddingHorizontal: 12, marginBottom: 15}}>
@@ -31,8 +30,7 @@ const TextInputCustom = ({
           onChangeText={setValue}
           placeholder={placeholder}
           placeholderTextColor="#333333"
-          showSoftInputOnFocus={isShowKeyboard}
-          style={{flex: 1, marginVertical: -10, fontSize: 16}}
+          style={{flex: 1, marginVertical: -10, fontSize: 16, color:'#333333'}}
         />
         {isShowIconRight == true ? (
           <TouchableOpacity

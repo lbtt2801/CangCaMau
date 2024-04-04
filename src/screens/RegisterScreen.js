@@ -33,7 +33,9 @@ const RegisterScreen = ({navigation}) => {
             source={IMAGES.ic_scan}
             style={{width: 16, height: 16, marginEnd: 5}}
           />
-          <Text style={styles.text_scan}>Đăng ký bằng CCCD gắn chip</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('ScanQR')}>
+            <Text style={styles.text_scan}>Đăng ký bằng CCCD gắn chip</Text>
+          </TouchableOpacity>
         </View>
 
         <TextInput

@@ -16,6 +16,8 @@ import {IMAGES} from '../assets/images/Images';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import InformationScreen from '../screens/InformationScreen';
 import ImportExportScreen from '../screens/ImportExportScreen';
+import FilterResultsScreen from '../screens/FilterResultsScreen';
+import SendRequestExportScreen from '../screens/SendRequestExportScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -123,7 +125,7 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false}}
-        initialRouteName={'ImportExport'}>
+        initialRouteName={'FilterResults'}>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
@@ -136,6 +138,8 @@ const AppNavigator = () => {
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
         <Stack.Screen name="Information" component={InformationScreen} />
         <Stack.Screen name="ImportExport" component={ImportExportScreen} />
+        <Stack.Screen name="FilterResults" component={FilterResultsScreen} />
+        <Stack.Screen name="SendRequestExport" component={SendRequestExportScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

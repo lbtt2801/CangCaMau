@@ -53,17 +53,17 @@ export default function Header({
     <View style={[styles.header, headerStyle]}>
       {isShowIconLeft == true ? HeaderIconLeft() : () => {}}
       {isShowTitleSup == true ? (
-        <View style={{flex: 1}}>
+        <View style={{flexDirection: 'column', flex: 1}}>
           <Text style={[styles.title, titleStyle]}>
-            {isShowTitle == true ? title : {}}
+            {isShowTitle == true ? title : <></>}
           </Text>
           <Text style={[styles.title, title_supStyle]}>
-            {isShowTitleSup == true ? title_sup : {}}
+            {isShowTitleSup == true ? title_sup : <></>}
           </Text>
         </View>
       ) : (
         <Text style={[styles.title, titleStyle]}>
-          {isShowTitle == true ? title : {}}
+          {isShowTitle == true ? title : <></>}
         </Text>
       )}
       {isShowIconRight == true ? HeaderIconRight() : () => {}}

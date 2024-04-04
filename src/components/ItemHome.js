@@ -1,9 +1,11 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
-const ItemHome = ({colorItem, colorName, iconItem, nameItem}) => {
+const ItemHome = ({colorItem, colorName, iconItem, nameItem, navFunc}) => {
   return (
-    <TouchableOpacity style={[styles.container, {backgroundColor: colorItem}]}>
+    <TouchableOpacity
+      style={[styles.container, {backgroundColor: colorItem}]}
+      onPress={navFunc}>
       <Image source={iconItem} style={styles.icon} />
       <Text style={[styles.name, {color: colorName}]}>{nameItem}</Text>
     </TouchableOpacity>

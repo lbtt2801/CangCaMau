@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
 import {IMAGES} from '../assets/images/Images';
@@ -6,7 +6,7 @@ import ItemHome from '../components/ItemHome';
 import {FeatureList} from '../MockData';
 import {getObject} from '../AsyncStorage';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const [name, setName] = useState();
   const [role, setRole] = useState();
 
@@ -14,7 +14,7 @@ const HomeScreen = () => {
     const fetchData = async () => {
       const user = await getObject('user');
       setName(user.name);
-      setRole(user.role)
+      setRole(user.role);
     };
 
     fetchData();
@@ -22,6 +22,7 @@ const HomeScreen = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#fff', paddingHorizontal: 15}}>
+      <StatusBar backgroundColor="#FFF" />
       <Header
         headerStyle={{
           paddingBottom: 5,
@@ -46,12 +47,15 @@ const HomeScreen = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-        {FeatureList.map((feature, index) => (
+        {FeatureList.map(feature => (
           <ItemHome
             colorItem={feature.colorFeature}
             iconItem={feature.data_image}
             nameItem={feature.name}
             colorName={feature.colorName}
+            navFunc={() => {
+              navigation.navigate(feature.name_screen);
+            }}
           />
         ))}
       </View>

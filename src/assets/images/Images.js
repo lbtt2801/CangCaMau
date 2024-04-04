@@ -33,5 +33,8 @@ export const IMAGES = {
   ic_avatar_white: require('../images/ic_avatar_white.png'),
   ic_calendar: require('../images/ic_calendar.png'),
   ic_options: require('../images/ic_options.png'),
-
+  ic_filter: require('../images/ic_filter.png'),
+  ic_radio_checked: require('../images/ic_radio_checked.png'),
+  ic_radio_unchecked: require('../images/ic_radio_unchecked.png'),
+  ic_close: require('../images/ic_close.png'),
 };

@@ -3,6 +3,7 @@ import {IMAGES} from './assets/images/Images';
 export const FeatureList = [
   {
     id: 0,
+    name_screen: 'ImportExport',
     data_image: IMAGES.ic_nhap_xuat_ben,
     name: 'Xuất/Nhập bến',
     colorFeature: '#8DD4FC',
@@ -10,6 +11,7 @@ export const FeatureList = [
   },
   {
     id: 1,
+    name_screen: 'ImportExport',
     data_image: IMAGES.ic_tau_ca,
     name: 'Tàu cá',
     colorFeature: '#FFCFA2',
@@ -17,6 +19,7 @@ export const FeatureList = [
   },
   {
     id: 2,
+    name_screen: 'ImportExport',
     data_image: IMAGES.ic_thuyen_vien,
     name: 'Thuyền viên',
     colorFeature: '#FFCFA2',
@@ -24,6 +27,7 @@ export const FeatureList = [
   },
   {
     id: 3,
+    name_screen: 'ImportExport',
     data_image: IMAGES.ic_ls_vi_pham,
     name: 'Lịch sử vi phạm',
     colorFeature: '#8DD4FC',
@@ -31,6 +35,7 @@ export const FeatureList = [
   },
   {
     id: 4,
+    name_screen: 'ImportExport',
     data_image: IMAGES.ic_ls_tai_nan,
     name: 'Lịch sử tai nạn',
     colorFeature: '#8DD4FC',
@@ -38,6 +43,7 @@ export const FeatureList = [
   },
   {
     id: 5,
+    name_screen: 'ImportExport',
     data_image: IMAGES.ic_canh_bao,
     name: 'Cảnh báo',
     colorFeature: '#FFCFA2',
